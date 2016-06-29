@@ -1,24 +1,22 @@
 /**
- * student service
+ * resource service
  */
 
 'use strict';
 
-App.factory('StudentService',['$http','$q',function($http,$q){
+App.factory('ResourceService',['$http','$q',function($http,$q){
 	
 	return {
         
-		fetchAllStudents: function()
+		fetchAllResources: function()
 		{
-        	
-            return $http.get('http://localhost:8085/project_rest/rest/students')
+            return $http.get('http://localhost:8008/project_rest/rest/resources')
                     .then(
                             function(response){
-                            	
                                 return response.data;
                             }, 
                             function(errResponse){
-                                console.error('Error while fetching students list');
+                                console.error('Error while fetching resources list');
                                 return $q.reject(errResponse);
                             }
                     );
@@ -26,58 +24,62 @@ App.factory('StudentService',['$http','$q',function($http,$q){
 	
 	
 	
-		fetchStudent: function(id)
+		fetchResource: function(id)
 		{
 			
-			return $http.get('http://localhost:8085/project_rest/rest/student/'+id)
+			return $http.get('http://localhost:8008/project_rest/rest/resource/{id}')
 					.then(
 							function(response){
 								return response.data;
 							},
 							function(errResponse){
-								console.error('No student by this id is present');
+								console.error('No resource by this id is present');
 								return $q.reject(errResponse);
 							}
 					);
 		},
 		
-		createStudent: function(student)
+		createResource: function(resource)
 		{
-			return $http.put('http://localhost:8085/project_rest/rest/create',student)
+			alert("2")
+			return $http.put('http://localhost:8008/project_rest/rest/create',resource)
 					.then(
 							function(response){
+								alert("3")
                                 return response.data;
                             }, 
                             function(errResponse){
-                                console.error('Error while creating student');
+                                console.error('Error while creating resource');
                                 return $q.reject(errResponse);
                             }
 					
 					);
 		},
 		
-		updateStudent: function(student)
+		updateResource: function(resource)
 		{
-            return $http.post('http://localhost:8085/project_rest/rest/update',student)
+			alert("update")
+            return $http.post('http://localhost:8008/project_rest/rest/update',resource)
                     .then(
                             function(response){
                                 return response.data;
                             }, 
                             function(errResponse){
-                                console.error('Error while updating student');
+                                console.error('Error while updating resource');
                                 return $q.reject(errResponse);
                             }
                     );
 	    },
 	    
-	    deleteStudent: function(id){
-            return $http.delete('http://localhost:8085/project_rest/rest/delete/'+id)
+	    deleteResource: function(id){
+            return $http.get('http://localhost:8008/project_rest/rest/delete/{id}')
                     .then(
                             function(response){
+                            	alert("service")
                                 return response.data;
                             }, 
                             function(errResponse){
-                                console.error('Error while deleting student');
+                                console.error('Error while deleting resource');
                                 return $q.reject(errResponse);
                             }
                     );

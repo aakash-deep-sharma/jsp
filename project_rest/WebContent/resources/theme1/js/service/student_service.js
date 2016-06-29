@@ -10,11 +10,9 @@ App.factory('StudentService',['$http','$q',function($http,$q){
         
 		fetchAllStudents: function()
 		{
-        	
-            return $http.get('http://localhost:8085/project_rest/rest/students')
+            return $http.get('http://localhost:8008/project_rest/rest/students')
                     .then(
                             function(response){
-                            	
                                 return response.data;
                             }, 
                             function(errResponse){
@@ -29,7 +27,7 @@ App.factory('StudentService',['$http','$q',function($http,$q){
 		fetchStudent: function(id)
 		{
 			
-			return $http.get('http://localhost:8085/project_rest/rest/student/{id}')
+			return $http.get('http://localhost:8008/project_rest/rest/student/{id}')
 					.then(
 							function(response){
 								return response.data;
@@ -43,9 +41,11 @@ App.factory('StudentService',['$http','$q',function($http,$q){
 		
 		createStudent: function(student)
 		{
-			return $http.put('http://localhost:8085/project_rest/rest/create',student)
+			alert("2")
+			return $http.put('http://localhost:8008/project_rest/rest/create',student)
 					.then(
 							function(response){
+								alert("3")
                                 return response.data;
                             }, 
                             function(errResponse){
@@ -59,7 +59,7 @@ App.factory('StudentService',['$http','$q',function($http,$q){
 		updateStudent: function(student)
 		{
 			alert("update")
-            return $http.post('http://localhost:8085/project_rest/rest/update',student)
+            return $http.post('http://localhost:8008/project_rest/rest/update',student)
                     .then(
                             function(response){
                                 return response.data;
@@ -72,7 +72,7 @@ App.factory('StudentService',['$http','$q',function($http,$q){
 	    },
 	    
 	    deleteStudent: function(id){
-            return $http.get('http://localhost:8085/project_rest/rest/delete/{id}')
+            return $http.get('http://localhost:8008/project_rest/rest/delete/{id}')
                     .then(
                             function(response){
                             	alert("service")

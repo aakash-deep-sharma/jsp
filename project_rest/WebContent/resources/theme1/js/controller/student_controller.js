@@ -14,7 +14,6 @@ App.controller('StudentController', ['$scope', 'StudentService', function($scope
     	StudentService.fetchAllStudents()
             .then(
 	                 function(d) {
-	                	 
 	                      self.students = d;
 	                 },
 	                  function(errResponse){
@@ -40,8 +39,10 @@ App.controller('StudentController', ['$scope', 'StudentService', function($scope
     
     
     self.createStudent = function(student){
+    	alert("1")
     	StudentService.createStudent(student)
     		.then(
+    				alert("4"),
     				self.fetchAllStudents,
     				function(errResponse){
     					console.error('Error while creating student.');

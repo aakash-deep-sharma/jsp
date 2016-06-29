@@ -11,9 +11,18 @@ body{
   color: white;
 }
 
+input.ng-invalid.ng-touched{
+	
+	background-color:  #ffb9bb;
+}
+
 div.well{
   height: 250px;
 } 
+
+div.has-error{
+	color: red;	
+}
 
 .Absolute-Center {
   margin: auto;

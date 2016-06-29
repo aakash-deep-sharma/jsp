@@ -17,10 +17,10 @@
 
 	<!-- DS bean -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		p:driverClassName="com.mysql.jdbc.Driver"
-		p:url="jdbc:mysql://localhost/training" 
-		p:username="root"
-		p:password="root" 
+		p:driverClassName="oracle.jdbc.OracleDriver"
+		p:url="jdbc:oracle:thin:@localhost:1521:xe" 
+		p:username="system"
+		p:password="system" 
 		p:initialSize="1" p:maxActive="2"
 		destroy-method="close">
 	</bean>
@@ -31,7 +31,7 @@
 		p:dataSource-ref="dataSource">
 		<property name="hibernateProperties">
 			<value>
-				hibernate.dialect=org.hibernate.dialect.MySQLDialect
+				hibernate.dialect=org.hibernate.dialect.Oracle10gDialect
 				hibernate.format_sql=true
 				hibernate.show_sql=true
 				hibernate.hbm2ddl.auto=update
@@ -48,8 +48,6 @@
 	
 	<!-- enable tx annotation suuport -->
 	<tx:annotation-driven  transaction-manager="transactionManager"/>
-	
-
 
 	<mvc:annotation-driven>
 		<mvc:message-converters>
@@ -57,17 +55,7 @@
 		</mvc:message-converters>
 	</mvc:annotation-driven>
 
-	<!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
-		    <property name="prefix" value="WEB-INF/views/" />
-		    <property name="suffix" value=".jsp" /> 
-	</bean> -->
 	
-	<!-- <bean id="contentNegotiationManager"
-             class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
-       <property name="defaultContentType" value="application/json" />
-  	</bean>
-  	 -->
-  	<!-- <mvc:annotation-driven /> -->
 </beans>
 
 
